@@ -10,24 +10,41 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_LOGIN=102;
+    private static final int REQUEST_USERINFO = 105;;
 boolean logon = false;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==REQUEST_LOGIN){
-            if(requestCode==RESULT_OK) {
-                String userid = data.getStringExtra("LOGIN_USERID");
-                String passwd = data.getStringExtra("LOGIN_PASSWD");
-                Log.d("PESULT", userid + "/" + passwd);
-            }else{
-                finish();
-            }
+        switch (requestCode) {
+            case REQUEST_LOGIN:
+
+
+                    if (resultCode == RESULT_OK) {
+                        String userid = data.getStringExtra("LOGIN_USERID");
+                        Toast.makeText(this,"Login userid:"+userid,Toast.LENGTH_LONG).show();
+                        getSharedPreferences("test",MODE_PRIVATE).edit().putString("USER",userid).apply();
+                        String passwd = data.getStringExtra("LOGIN_PASSWD");
+                        Log.d("PESULT", userid + "/" + passwd);
+                    } else {
+                        finish();
+                    }
+                    break;
+            case REQUEST_USERINFO:
+                if(resultCode==RESULT_OK){
+                    String nickname=data.getStringExtra("EXTRA_NICKNAME");
+                    String tel=data.getStringExtra("EXTRA_TEL");
+                    Toast.makeText(this,"NICKNAME"+nickname,Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,"PHONE"+tel,Toast.LENGTH_LONG).show();
+
+                }
+                break;
+                }
         }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

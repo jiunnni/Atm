@@ -8,17 +8,25 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
+    private EditText edUserid;
+    private EditText edPasswd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
+        EditText edUserid = (EditText)findViewById(R.id.userid);
+        EditText edPasswd=(EditText)findViewById(R.id.passwd);
+                String userid=getSharedPreferences("atm",MODE_PRIVATE)
+                        .getString("PREF_USERID"," ");
+        edUserid.setText(userid);
     }
         public void login(View view){
 
-            EditText edUserid=(EditText)findViewById(R.id.userid);
-        EditText edPasswd=(EditText)findViewById(R.id.passwd);
-        String userid=edUserid.getText().toString();
+
+
+            String userid=edUserid.getText().toString();
         String passwd =edPasswd.getText().toString();
         if("jack".equals(userid)&&"1234".equals(passwd)) {
             Toast.makeText(this, "登入成功", Toast.LENGTH_LONG).show();
