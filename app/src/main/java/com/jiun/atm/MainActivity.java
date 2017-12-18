@@ -23,6 +23,7 @@ boolean logon = false;
         switch (requestCode) {
             case REQUEST_LOGIN:
 
+                
 
                     if (resultCode == RESULT_OK) {
                         String userid = data.getStringExtra("LOGIN_USERID");
