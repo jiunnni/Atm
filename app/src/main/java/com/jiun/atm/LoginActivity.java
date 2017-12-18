@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
+
+
     private EditText edUserid;
     private EditText edPasswd;
 
@@ -16,10 +18,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-        EditText edUserid = (EditText)findViewById(R.id.userid);
-        EditText edPasswd=(EditText)findViewById(R.id.passwd);
-                String userid=getSharedPreferences("atm",MODE_PRIVATE)
-                        .getString("PREF_USERID"," ");
+        edUserid = (EditText)findViewById(R.id.userid);
+        edPasswd = (EditText)findViewById(R.id.passwd);
+                String userid=getSharedPreferences("test",MODE_PRIVATE)
+                        .getString("USER"," ");
         edUserid.setText(userid);
     }
         public void login(View view){

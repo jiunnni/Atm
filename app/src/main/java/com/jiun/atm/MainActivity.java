@@ -36,8 +36,8 @@ boolean logon = false;
                     break;
             case REQUEST_USERINFO:
                 if(resultCode==RESULT_OK){
-                    String nickname=data.getStringExtra("EXTRA_NICKNAME");
-                    String tel=data.getStringExtra("EXTRA_TEL");
+                    String nickname=data.getStringExtra("EXTRA_USERNICKNAME");
+                    String tel=data.getStringExtra("EXTRA_USERTEL");
                     Toast.makeText(this,"NICKNAME"+nickname,Toast.LENGTH_LONG).show();
                     Toast.makeText(this,"PHONE"+tel,Toast.LENGTH_LONG).show();
                  getSharedPreferences("info",MODE_PRIVATE)
@@ -63,14 +63,20 @@ boolean logon = false;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+
+                Intent j = new Intent(MainActivity.this, UserInfoActivity.class);
+                startActivityForResult(j, REQUEST_USERINFO);
 
             }
+            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            //.setAction("Action", null).show();
+
+
         });
 
-    }
 
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
