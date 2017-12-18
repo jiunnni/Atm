@@ -40,7 +40,8 @@ boolean logon = false;
                     String tel=data.getStringExtra("EXTRA_TEL");
                     Toast.makeText(this,"NICKNAME"+nickname,Toast.LENGTH_LONG).show();
                     Toast.makeText(this,"PHONE"+tel,Toast.LENGTH_LONG).show();
-
+                 getSharedPreferences("info",MODE_PRIVATE)
+                         .edit().putString("Name",nickname).putString("Number",tel).apply();
                 }
                 break;
                 }
@@ -50,10 +51,10 @@ boolean logon = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (!logon){
-            Intent intent=new Intent(this,LoginActivity.class);
+        if (!logon) {
+            Intent intent = new Intent(this, LoginActivity.class);
             //startActivity(intent);
-           startActivityForResult(intent,REQUEST_LOGIN);
+            startActivityForResult(intent, REQUEST_LOGIN);
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,8 +65,10 @@ boolean logon = false;
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
         });
+
     }
 
     @Override
