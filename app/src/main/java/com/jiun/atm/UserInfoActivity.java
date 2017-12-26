@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 public class UserInfoActivity extends AppCompatActivity {
 
@@ -20,6 +21,9 @@ public class UserInfoActivity extends AppCompatActivity {
         String tel=getSharedPreferences("info",MODE_PRIVATE).getString("Number","");
         edNickname.setText(nickname);
         edtel.setText(tel);
+        Spinner notify=(Spinner)findViewById(R.id.sp_city);
+
+
     }
 
     public void back(View view){
@@ -31,4 +35,5 @@ public class UserInfoActivity extends AppCompatActivity {
         setResult(RESULT_OK,getIntent());
         finish();
     }
+
 }
