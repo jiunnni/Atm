@@ -35,6 +35,10 @@ public class CityActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
     Log.d(TAG,"onItemClick:"+position+"/"+cities[position]);
+        String[]data=null;
+        if (position==0){
+            data=new String[]{"中正區","暖暖區","八堵區"};
+        }
 
 
     }
